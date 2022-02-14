@@ -20,12 +20,10 @@ class App extends React.Component {
   }
 
   formatTime = (time) => {
-    const minutes = Math.floor((time % 3600) / 60);
-    const seconds = Math.round(time % 60);
-    return [
-      minutes > 9 ? minutes : '0' + minutes,
-      seconds > 9 ? seconds : '0' + seconds
-    ].filter(Boolean).join(':');
+    let sec_num = parseInt(time, 10);
+    let min = Math.floor(sec_num / 60) % 60;
+    let sec = sec_num % 60;
+    return [min,sec].map(v => v < '10' ? '0' + v : v).join(':');
   }
 
   step = () => {
